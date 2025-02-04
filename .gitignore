@@ -1,0 +1,21 @@
+# Virtual environment
+venv/
+
+# SQLite database
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+
+# Bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
