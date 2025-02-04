@@ -10,7 +10,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Todo List</h1>
-        
+
         <!-- Add Todo Form -->
         <div class="card mb-4">
             <div class="card-body">
@@ -31,10 +31,18 @@
         <!-- Todo List -->
         <div class="list-group">
             {% for todo in todos %}
-            <div class="list-group-item">
+            <div class="list-group-item {% if todo.completed %}list-group-item-success{% endif %}">
                 <h5 class="mb-1">{{ todo.title }}</h5>
                 <p class="mb-1">{{ todo.description }}</p>
                 <small class="text-muted">Created: {{ todo.created_date.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+
+                <div class="mt-2">
+                    {% if not todo.completed %}
+                    <a href="{{ url_for('complete', todo_id=todo.id) }}" class="btn btn-success btn-sm">Mark as Completed</a>
+                    {% endif %}
+                    <a href="{{ url_for('edit', todo_id=todo.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ url_for('delete', todo_id=todo.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
             </div>
             {% endfor %}
         </div>
